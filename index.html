@@ -2,8 +2,19 @@
   <head>
     <meta charset="utf-8" />
     <title>JackeyGao</title>
+    <meta name="description" content="Python程序员, JackeyGao, 工作地点上海">
     <link rel="stylesheet" type="text/css" href="/static/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="/static/jquery.js"></script>
+    <script src="/static/semantic.min.js"></script>
+    <script>
+    $(function () {
+      $("#mail").popup();
+      $("#apps .item").popup({
+        on: 'click'
+      });
+    });
+    </script>
   </head>
   <body>
     <div id="container" style="margin-top: 30px;">
@@ -30,7 +41,7 @@
       <div class="seven wide column message-list">
         <div style="position: absolute;right: 0px;top: 0px;">
           <div class="ui list">
-            <a class="item" href="mailto:gaojunqi@outlook.com"><i class="large grey mail icon"></i></a>
+            <div id="mail" class="item" data-title="gaojunqi#outlook.com"><i class="large grey mail icon"></i></div>
             <a class="item" href="https://github.com/jackeyGao"><i class="large grey github icon"></i></a>
           </div>
         </div>
@@ -62,8 +73,8 @@
         <h2 class="ui grey header monospaced">
           <span  class="text monospaced blue">dir(<span class="text monospaced green">APPS</span>)</span>
         </h2>
-        <div class="ui selection list">
-          <div class="item">
+        <div id="apps" class="ui selection list">
+          <div class="item" data-content="RequestMeta提供一个URL, 您可以对此URL进行任何HTTP操作, 操作后会提供详细的请求数据供您参考. 使用RequestMeta可以很直观的看到您的HTTP客户端请求的头信息及参数和内容信息">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/requestMeta">
                 <span class="grey text" style="position: absolute;right: 120px;">
@@ -76,7 +87,7 @@
               <span class="text grey monospaced" ><b>Request<span class="text monospaced green">Meta</span></b></span>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-content="HTTPKnows是一个轻量的HTTP知识库, 它包含所有标准的HTTP方法, HTTP返回码及所表示的意义, 制定的标准均来自互联网工程任务组(IETF)">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/HTTPKnows">
                   <span class="grey text" style="position: absolute;right: 120px;">
@@ -89,7 +100,7 @@
               <span class="text green monospaced"><b>HTTP<span  class="text monospaced grey">Knows</span></b></span>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-content="CMDAnalysis 是一个终端历史命令可视化工具. 目前支持对bash, zsh 命令历史文件进行分析. 注重安全, 分析后即删除. 使用下面命令来可视化历史文件, 每次调用都会生成一个url, 通过url可以访问可视化详细页面.">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/CMDAnalysis">
                 <span class="grey text" style="position: absolute;right: 120px;">
@@ -102,7 +113,7 @@
               <span class="text blue monospaced"><b>CMD<span  class="text monospaced grey">Analysis</span></b></span>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-content="查看你终端命令使用频率列表, 原理是通过宿主目录下的 .*history 分析后得到历史命令使用频率状态， 并且进行排序输出.">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/cmdstats">
                 <span class="grey text" style="position: absolute;right: 120px;">
@@ -116,7 +127,7 @@
             </div>
           </div>
 
-          <div class="item">
+          <div class="item" data-content="可以对JPG图片转成ASCII图案">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/JPG2Ascii">
                 <span class="grey text" style="position: absolute;right: 120px;">
@@ -129,7 +140,7 @@
               <span class="text grey monospaced"><b>JPG2Ascii</b></span>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-content="一个功能齐全的博客系统, 支持markdown格式 基于Django">
             <div class="right floated content">
               <a href="http://jackeygao.github.io/markblog/">
                 <span class="grey text" style="position: absolute;right: 120px;">
@@ -142,7 +153,7 @@
               <span class="text grey monospaced"><b>Markblog</b></span>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-content="一个数据库接口, 基于mysql 通过rest调用方式在数据库中创建数据表, 并可以对数据表进行增删改查操作">
             <div class="right floated content">
               <a href="https://github.com/jackeyGao/dbInterface">
                 <span class="grey text" style="position: absolute;right: 120px;">
