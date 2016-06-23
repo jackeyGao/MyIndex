@@ -9,7 +9,16 @@
     <script src="/static/semantic.min.js"></script>
     <script>
     $(function () {
-      $("#mail").popup();
+      
+      $("#mail").popup({
+        on: 'click',
+        hoverable: true,
+        delay: {
+          show: 300,
+          hide: 800
+        }
+      });
+      
       $("#apps .item").popup({
         on: 'click'
       });
