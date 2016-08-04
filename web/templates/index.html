@@ -1,0 +1,168 @@
+{% load tools %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JackeyGao</title>
+    <meta name="description" content="Python程序员, JackeyGao, 工作地点上海">
+    <meta property="qc:admins" content="26552771055655" />
+    <link rel="stylesheet" type="text/css" href="/static/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="/static/jquery.js"></script>
+    <script src="/static/semantic.min.js"></script>
+    <script>
+    $(function () {
+      
+      $("#mail").popup({
+        on: 'click',
+        hoverable: true,
+        delay: {
+          show: 300,
+          hide: 800
+        }
+      });
+      
+      $("#apps .item").popup({
+        on: 'click'
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <div id="container" style="margin-top: 30px;">
+    <!-- header start -->
+    <div class="ui fluid container">
+      <div class="ui grid" style="margin-left: 35px;margin-right: 35px;">
+        <div class="eight wide column"  style="margin-top: 50px;">
+          <div style="float: right;">
+            <a href="/">
+              <h1 class="ui blue monospaced header" style="font-size: 3em;">
+              <span  class="text monospaced grey">{{ profile|g:"title"|default_if_none:"title" }}</span>
+            </h1>
+            </a>
+          </div>
+        </div>
+        <div class="eight wide column">
+        </div>
+      </div>
+    </div>
+    <!-- header end -->
+    
+    <!-- content start-->
+    <div class="ui centered grid" style="margin-top: 3em;margin-bottom: 3em;">
+      <div class="seven wide column message-list">
+        <div style="position: absolute;right: 0px;top: 0px;">
+          <div class="ui list">
+            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large grey mail icon"></i></div>
+            <a class="item" href="{{ profile|g:"github"|default_if_none:"github" }}"><i class="large grey github icon"></i></a>
+          </div>
+        </div>
+
+        <img class="ui small centered circular image" src="/static/images/avatar.jpg">
+
+        <h4 class="ui centered grey header">{{ profile|g:"name"|default_if_none:"name" }} <span class="black text">/</span> <span class="blue text">{{ profile|g:"city"|default_if_none:"city" }}</span></h4>
+
+        <div style="text-align: center">
+          <div class="ui horizontal bulleted list">
+            {% for tag in profile|g:"tags"|list %}
+            <div class="item"><span class="text green">{{ tag }}</span></div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div style="text-align: center;margin-top: 1em;">
+          <a href="{{ profile|g:"blog" }}">
+            <div class="ui basic green icon big button">
+              <i class="rss icon"></i>博客
+            </div>
+          </a>
+        </div>
+
+        <!-- APP展示区 开始 -->
+        <h2 class="ui grey header monospaced">
+          <span  class="text monospaced blue">dir(<span class="text monospaced green">APPS</span>)</span>
+        </h2>
+        <div id="apps" class="ui selection list">
+          {% for app in apps %}
+          <div class="item" data-content="{{ app.desc }}">
+            <div class="right floated content">
+              {% if app.repo %}
+              <a href="{{ app.repo }}">
+                <span class="green text" style="position: absolute;right: 120px;">
+                 <i class="github icon"></i>
+                </span>
+              </a>
+              {% else %}
+              <span class="text" style="position: absolute;right: 120px;">
+                <i class="github icon" title="未开源"></i>
+              </span>
+              {% endif %}
+
+              {% if app.demo %}
+              <a href="{{ app.demo }}"><span class="blue text">访问</span></a>
+              {% else %}
+              无
+              {% endif %}
+            </div>
+            <div class="content">
+              <span class="text grey monospaced" ><b>{{ app.name }}</span></b></span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- APP展示区 结束 -->
+
+
+        <!-- 技能展示区 开始 -->
+        <h2 class="ui grey header monospaced">
+          <span  class="text monospaced blue">dir(<span class="text monospaced green">skills</span>)</span>
+        </h2>
+        <div class="ui selection list">
+          {% for skill in skills %}
+          <div class="item">
+            <div class="right floated content">
+              <span class="grey text" style="position: absolute;right: 120px;">
+                {{ skill.level }}
+              </span>
+              <span class="green text">{{ skill.start }}年</span>
+            </div>
+            <div class="content">
+              <span class="text grey monospaced" >{{ skill.name }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- 技能展示区 结束 -->
+
+
+        <!-- 框架展示区 开始 -->
+        <h2 class="ui grey header monospaced">
+          <span  class="text monospaced blue">dir(<span class="text monospaced green">frameworks</span>)</span>
+        </h2>
+        <div class="ui selection list">
+          {% for framework in frameworks %}
+          <div class="item">
+            <div class="right floated content">
+              <span class="grey text" style="position: absolute;right: 120px;">
+                {{ framework.level }}
+              </span>
+              <span class="green text">{{ framework.start }}年</span>
+            </div>
+            <div class="content">
+              <span class="text grey monospaced" >{{ framework.name }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- 框架展示区 结束 -->
+
+
+      </div>
+    </div>
+    <!-- content end-->
+    </div>
+    <div id="footer">
+      <span class="monospaced text">© 2016 JackeyGao. Power by <a href="https://www.conoha.jp/referral/?token=G8vOyReluNtZN0fQSSAyNzldtPOCAFhanp39bkuppaJG.w90xHc-01S"><span class="green text">Conoha</span></a></span>
+    </div>
+  </body> 
+</html>
+
