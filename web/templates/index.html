@@ -49,15 +49,15 @@
     
     <!-- content start-->
     <div class="ui centered grid" style="margin-top: 3em;margin-bottom: 3em;">
-      <div class="seven wide column message-list">
-        <div style="position: absolute;right: 0px;top: 0px;">
+      <div class="seven wide column message-list" style="padding: 0px; border-radius: 5px;">
+        <div style="position: absolute;right: 0px;top: 150px;">
           <div class="ui list">
             <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large grey mail icon"></i></div>
-            <a class="item" href="{{ profile|g:"github"|default_if_none:"github" }}"><i class="large grey github icon"></i></a>
           </div>
         </div>
 
-        <img class="ui small centered circular image" src="/static/images/avatar.jpg">
+        <div class="github-card" data-user="jackeyGao" data-width="100%" data-height="320px" data-theme="medium" style="border-radius: 0px;"></div>
+        <script src="/static/github-cards/widget.js"></script>
 
         <h4 class="ui centered grey header">{{ profile|g:"name"|default_if_none:"name" }} <span class="black text">/</span> <span class="blue text">{{ profile|g:"city"|default_if_none:"city" }}</span></h4>
 
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <div style="text-align: center;margin-top: 1em;">
+        <div style="text-align: center;margin-top: 1em;margin-bottom: 1em;">
           <a href="{{ profile|g:"blog" }}">
             <div class="ui basic green icon big button">
               <i class="rss icon"></i>博客
@@ -77,81 +77,87 @@
           </a>
         </div>
 
+        
         <!-- APP展示区 开始 -->
-        <h2 class="ui grey header monospaced">
-          <span  class="text monospaced blue">dir(<span class="text monospaced green">APPS</span>)</span>
-        </h2>
-        <div id="apps" class="ui selection list">
-          {% for app in apps %}
-          <div class="item" data-content="{{ app.desc }}">
-            <div class="right floated content">
-              {% if app.repo %}
-              <a href="{{ app.repo }}">
-                <span class="green text" style="position: absolute;right: 120px;">
-                 <i class="github icon"></i>
+        <div style="margin: 0px 14px;">
+          <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
+            <span  class="text monospaced blue">dir(<span class="text monospaced green">APPS</span>)</span>
+          </h2>
+          <div id="apps" class="ui selection list" style="margin-top: 0px;">
+            {% for app in apps %}
+            <div class="item" data-content="{{ app.desc }}">
+              <div class="right floated content">
+                {% if app.repo %}
+                <a href="{{ app.repo }}">
+                  <span class="green text" style="position: absolute;right: 120px;">
+                   <i class="github icon"></i>
+                  </span>
+                </a>
+                {% else %}
+                <span class="text" style="position: absolute;right: 120px;">
+                  <i class="github icon" title="未开源"></i>
                 </span>
-              </a>
-              {% else %}
-              <span class="text" style="position: absolute;right: 120px;">
-                <i class="github icon" title="未开源"></i>
-              </span>
-              {% endif %}
-
-              {% if app.demo %}
-              <a href="{{ app.demo }}"><span class="blue text">访问</span></a>
-              {% else %}
-              无
-              {% endif %}
+                {% endif %}
+                {% if app.demo %}
+                <a href="{{ app.demo }}"><span class="blue text">访问</span></a>
+                {% else %}
+                无
+                {% endif %}
+              </div>
+              <div class="content">
+                <span class="text grey monospaced" ><b>{{ app.name }}</span></b></span>
+              </div>
             </div>
-            <div class="content">
-              <span class="text grey monospaced" ><b>{{ app.name }}</span></b></span>
-            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
         <!-- APP展示区 结束 -->
 
 
         <!-- 技能展示区 开始 -->
-        <h2 class="ui grey header monospaced">
-          <span  class="text monospaced blue">dir(<span class="text monospaced green">skills</span>)</span>
-        </h2>
-        <div class="ui selection list">
-          {% for skill in skills %}
-          <div class="item">
-            <div class="right floated content">
-              <span class="grey text" style="position: absolute;right: 120px;">
-                {{ skill.level }}
-              </span>
-              <span class="green text">{{ skill.start }}年</span>
+        <div style="margin: 0px 14px;">
+          <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
+            <span  class="text monospaced blue">dir(<span class="text monospaced green">skills</span>)</span>
+          </h2>
+          <div class="ui selection list" style="margin-top: 0px;">
+            {% for skill in skills %}
+            <div class="item">
+              <div class="right floated content">
+                <span class="grey text" style="position: absolute;right: 120px;">
+                  {{ skill.level }}
+                </span>
+                <span class="green text">{{ skill.start }}年</span>
+              </div>
+              <div class="content">
+                <span class="text grey monospaced" >{{ skill.name }}</span>
+              </div>
             </div>
-            <div class="content">
-              <span class="text grey monospaced" >{{ skill.name }}</span>
-            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
         <!-- 技能展示区 结束 -->
 
 
         <!-- 框架展示区 开始 -->
-        <h2 class="ui grey header monospaced">
-          <span  class="text monospaced blue">dir(<span class="text monospaced green">frameworks</span>)</span>
-        </h2>
-        <div class="ui selection list">
-          {% for framework in frameworks %}
-          <div class="item">
-            <div class="right floated content">
-              <span class="grey text" style="position: absolute;right: 120px;">
-                {{ framework.level }}
-              </span>
-              <span class="green text">{{ framework.start }}年</span>
+        <div style="margin: 0px 14px;">
+          <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
+            <span  class="text monospaced blue">dir(<span class="text monospaced green">frameworks</span>)</span>
+          </h2>
+          <div class="ui selection list" style="margin-top: 0px;">
+            {% for framework in frameworks %}
+            <div class="item">
+              <div class="right floated content">
+                <span class="grey text" style="position: absolute;right: 120px;">
+                  {{ framework.level }}
+                </span>
+                <span class="green text">{{ framework.start }}年</span>
+              </div>
+              <div class="content">
+                <span class="text grey monospaced" >{{ framework.name }}</span>
+              </div>
             </div>
-            <div class="content">
-              <span class="text grey monospaced" >{{ framework.name }}</span>
-            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
         <!-- 框架展示区 结束 -->
 
