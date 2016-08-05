@@ -52,7 +52,8 @@
       <div class="seven wide column message-list" style="padding: 0px; border-radius: 5px;">
         <div style="position: absolute;right: 0px;top: 150px;">
           <div class="ui list">
-            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large grey mail icon"></i></div>
+            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large teal mail icon"></i></div>
+            <a class="item" href="https://twitter.com/{{ profile|g:"twitter"|default_if_none:"twitter" }}"><i class="large blue twitter icon"></i></a>
           </div>
         </div>
 
