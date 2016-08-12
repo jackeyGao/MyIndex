@@ -45,7 +45,7 @@
     </script>
   </head>
   <body>
-    <div id="container" style="margin-top: 30px;">
+    <div id="container" style="margin-top: 20px;">
     <!-- header start -->
     <div class="ui fluid container">
       <div class="ui grid" style="margin-left: 35px;margin-right: 35px;">
@@ -65,18 +65,18 @@
     <!-- header end -->
     
     <!-- content start-->
-    <div class="ui centered grid" style="margin-top: 3em;margin-bottom: 3em;">
+    <div class="ui centered grid" style="margin-top: 1em;margin-bottom: 3em;">
       <div class="seven wide column message-list" style="padding: 0px; border-radius: 5px;">
-        <div style="position: absolute;right: 0px;top: 300px;">
+        <div style="position: absolute;right: 0px;top: 260px;">
           <div class="ui list">
-            <a id="github" class="item" data-title="{{ profile|g:"github"|default_if_none:"github" }}"><i class="large blue github icon"></i></a>
+            <a class="item" href="https://github.com/{{ profile|g:"github"|default_if_none:"github" }}" ><i class="large blue github icon"></i></a>
             <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large blue mail icon"></i></div>
             <a class="item" href="https://twitter.com/{{ profile|g:"twitter"|default_if_none:"twitter" }}"><i class="large blue twitter icon"></i></a>
           </div>
         </div>
-        <div style="width: 100%; height: 300px;background-image: url('/static/images/header-nav-min.jpeg');border-radius: 5px 5px 0px 0px; background-size: 100% 100%;">
+        <div style="width: 100%; height: 260px;background-image: url('/static/images/header-nav-min.jpeg');border-radius: 5px 5px 0px 0px; background-size: 100% 100%;">
           <div style="position: absolute; left: 50%;">  
-            <div style="position: relative; left: -50%; bottom: -225px;">
+            <div style="position: relative; left: -50%; bottom: -185px;">
                 <img class="ui small circular image" src="/static/images/avatar.jpg">
             </div>
           </div>
