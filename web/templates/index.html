@@ -67,15 +67,23 @@
     <!-- content start-->
     <div class="ui centered grid" style="margin-top: 3em;margin-bottom: 3em;">
       <div class="seven wide column message-list" style="padding: 0px; border-radius: 5px;">
-        <div style="position: absolute;right: 0px;top: 150px;">
+        <div style="position: absolute;right: 0px;top: 300px;">
           <div class="ui list">
-            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large teal mail icon"></i></div>
+            <a id="github" class="item" data-title="{{ profile|g:"github"|default_if_none:"github" }}"><i class="large blue github icon"></i></a>
+            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large blue mail icon"></i></div>
             <a class="item" href="https://twitter.com/{{ profile|g:"twitter"|default_if_none:"twitter" }}"><i class="large blue twitter icon"></i></a>
           </div>
         </div>
+        <div style="width: 100%; height: 300px;background-image: url('/static/images/header-nav-min.jpeg');border-radius: 5px 5px 0px 0px; background-size: 100% 100%;">
+          <div style="position: absolute; left: 50%;">  
+            <div style="position: relative; left: -50%; bottom: -225px;">
+                <img class="ui small circular image" src="/static/images/avatar.jpg">
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%; height: 80px;">
+        </div>
 
-        <div class="github-card" data-user="{{ profile|g:"github" }}" data-width="100%" data-height="50%" data-theme="medium" style="border-radius: 0px;"></div>
-        <script src="/static/github-cards/widget.js"></script>
 
         <h4 class="ui centered grey header">{{ profile|g:"name"|default_if_none:"name" }} <span class="black text">/</span> <span class="blue text">{{ profile|g:"city"|default_if_none:"city" }}</span></h4>
 
@@ -187,6 +195,11 @@
     <div id="footer">
       <span class="monospaced text"><b><a href="https://github.com/jackeyGao/MyIndex"><i class="green github icon"></i></a>Star on github | © 2016 JackeyGao. Power by <a href="https://www.conoha.jp/referral/?token=G8vOyReluNtZN0fQSSAyNzldtPOCAFhanp39bkuppaJG.w90xHc-01S"><span class="green text">Conoha</span></a></b></span>
     </div>
+    <script>
+    $('img').on('mouseover', function() {
+      $('img').transition('jiggle', '2000ms');
+    });
+    </script>
   </body> 
 </html>
 
