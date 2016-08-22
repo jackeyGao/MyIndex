@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>JackeyGao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Python程序员, JackeyGao, 工作地点上海">
     <meta property="qc:admins" content="26552771055655" />
     <link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png">
@@ -26,104 +27,45 @@
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="/static/jquery.js"></script>
     <script src="/static/semantic.min.js"></script>
-    <script>
-    $(function () {
-      
-      $("#mail").popup({
-        on: 'click',
-        hoverable: true,
-        delay: {
-          show: 300,
-          hide: 800
-        }
-      });
-      
-      $("#apps .item").popup({
-        on: 'click'
-      });
-    });
-    </script>
   </head>
   <body>
-    <div id="container" style="margin-top: 20px;">
-    <!-- header start -->
-    <div class="ui fluid container">
-      <div class="ui grid" style="margin-left: 35px;margin-right: 35px;">
-        <div class="eight wide column"  style="margin-top: 50px;">
-          <div style="float: right;">
-            <a href="/">
-              <h1 class="ui blue monospaced header" style="font-size: 3em;">
-              <span  class="text monospaced grey">{{ profile|g:"title"|default_if_none:"title" }}</span>
-            </h1>
-            </a>
+    <div class="ui text container" style="background: #F3F3F4; padding: 20px 0px;">
+      <h1 class="ui blue centered monospaced header" style="font-size: 3em;">
+        <span  class="text monospaced teal">{{ profile|g:"title"|default_if_none:"title" }}</span>
+      </h1>
+      <div style="height: 180px;background: #A3E4D7;margin-bottom: 90px;">
+         <div style="position: absolute; left: 50%;">  
+            <div style="position: relative; left: -50%; bottom: -105px;">
+              <img class="ui small bordered circular image" src="/static/images/avatar.jpg">
+            </div>
           </div>
-        </div>
-        <div class="eight wide column">
-        </div>
       </div>
-    </div>
-    <!-- header end -->
-    
-    <!-- content start-->
-    <div class="ui centered grid" style="margin-top: 1em;margin-bottom: 3em;">
-      <div class="seven wide column message-list" style="padding: 0px; border-radius: 5px;">
-        <div style="position: absolute;right: 0px;top: 260px;">
-          <div class="ui list">
-            <a class="item" href="https://github.com/{{ profile|g:"github"|default_if_none:"github" }}" ><i class="large blue github icon"></i></a>
-            <div id="mail" class="item" data-title="{{ profile|g:"mail"|default_if_none:"mail" }}"><i class="large blue mail icon"></i></div>
-            <a class="item" href="https://twitter.com/{{ profile|g:"twitter"|default_if_none:"twitter" }}"><i class="large blue twitter icon"></i></a>
-          </div>
-        </div>
-        <div style="width: 100%; height: 260px;background-image: url('/static/images/header-nav-min.jpeg');border-radius: 5px 5px 0px 0px; background-size: 100% 100%;">
-          <div style="position: absolute; left: 50%;">  
-            <div style="position: relative; left: -50%; bottom: -185px;">
-                <img class="ui small circular image" src="/static/images/avatar.jpg">
-            </div>
-          </div>
-        </div>
-        <div style="width: 100%; height: 80px;">
-        </div>
+      <h4 class="ui centered grey header">{{ profile|g:"name"|default_if_none:"name" }} <span class="black text">/</span> <span class="blue text">{{ profile|g:"city"|default_if_none:"city" }}</span></h4>
 
-
-        <h4 class="ui centered grey header">{{ profile|g:"name"|default_if_none:"name" }} <span class="black text">/</span> <span class="blue text">{{ profile|g:"city"|default_if_none:"city" }}</span></h4>
-
-        <div style="text-align: center">
+       <div style="text-align: center">
           <div class="ui horizontal bulleted list">
-            {% for tag in profile|g:"tags"|list %}
+          {% for tag in profile|g:"tags"|list %}
             <div class="item"><span class="text green">{{ tag }}</span></div>
-            {% endfor %}
+          {% endfor %}
           </div>
         </div>
 
-        <div style="text-align: center;margin-top: 1em;margin-bottom: 1em;">
+        <div style="text-align: center; margin: 14px;">
           <a href="{{ profile|g:"blog" }}">
-            <div class="ui basic green icon big button">
+          <div class="ui basic green icon big button">
               <i class="rss icon"></i>博客
-            </div>
+          </div>
           </a>
         </div>
 
-        
-        <!-- APP展示区 开始 -->
         <div style="margin: 0px 14px;">
           <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
-            <span  class="text monospaced blue">dir(<span class="text monospaced green">APPS</span>)</span>
+            <span  class="text monospaced blue"># <span class="text monospaced green">APPS</span></span>
           </h2>
           <div id="apps" class="ui selection list" style="margin-top: 0px;">
             {% for app in apps %}
             <div class="item" data-content="{{ app.desc }}">
               <div class="right floated content">
-                {% if app.repo %}
-                <a href="{{ app.repo }}">
-                  <span class="green text" style="position: absolute;right: 120px;">
-                   <i class="github icon"></i>
-                  </span>
-                </a>
-                {% else %}
-                <span class="text" style="position: absolute;right: 120px;">
-                  <i class="github icon" title="未开源"></i>
-                </span>
-                {% endif %}
                 {% if app.demo %}
                 <a href="{{ app.demo }}"><span class="blue text">访问</span></a>
                 {% else %}
@@ -131,28 +73,35 @@
                 {% endif %}
               </div>
               <div class="content">
+                {% if app.repo %}
+                <a href="{{ app.repo }}">
+                  <span class="green text">
+                   <i class="github icon"></i>
+                  </span>
+                </a>
+                {% else %}
+                <span class="text">
+                  <i class="github icon" title="未开源"></i>
+                </span>
+                {% endif %}
                 <span class="text grey monospaced" ><b>{{ app.name }}</span></b></span>
               </div>
             </div>
             {% endfor %}
           </div>
         </div>
-        <!-- APP展示区 结束 -->
 
 
-        <!-- 技能展示区 开始 -->
         <div style="margin: 0px 14px;">
           <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
-            <span  class="text monospaced blue">dir(<span class="text monospaced green">skills</span>)</span>
+            <span  class="text monospaced blue"># <span class="text monospaced green">Skills</span></span>
           </h2>
           <div class="ui selection list" style="margin-top: 0px;">
             {% for skill in skills %}
             <div class="item">
               <div class="right floated content">
-                <span class="grey text" style="position: absolute;right: 120px;">
-                  {{ skill.level }}
-                </span>
-                <span class="green text">{{ skill.start }}年</span>
+                <span class="grey level text">{{ skill.level }}</span>
+                <span class="green year text">{{ skill.start }}年</span>
               </div>
               <div class="content">
                 <span class="text grey monospaced" >{{ skill.name }}</span>
@@ -161,22 +110,20 @@
             {% endfor %}
           </div>
         </div>
-        <!-- 技能展示区 结束 -->
 
 
-        <!-- 框架展示区 开始 -->
         <div style="margin: 0px 14px;">
           <h2 class="ui grey header monospaced" style="margin-bottom: 0px;margin-top: 14px;">
-            <span  class="text monospaced blue">dir(<span class="text monospaced green">frameworks</span>)</span>
+             <span  class="text monospaced blue"># <span class="text monospaced green">Frameworks</span></span>
           </h2>
           <div class="ui selection list" style="margin-top: 0px;">
             {% for framework in frameworks %}
             <div class="item">
               <div class="right floated content">
-                <span class="grey text" style="position: absolute;right: 120px;">
+                <span class="grey level text">
                   {{ framework.level }}
                 </span>
-                <span class="green text">{{ framework.start }}年</span>
+                <span class="green year text">{{ framework.start }}年</span>
               </div>
               <div class="content">
                 <span class="text grey monospaced" >{{ framework.name }}</span>
@@ -185,21 +132,12 @@
             {% endfor %}
           </div>
         </div>
-        <!-- 框架展示区 结束 -->
-
-
+        <div class="ui divider"></div>
+        <div id="footer">
+        <span class="monospaced text"><b><a href="https://github.com/jackeyGao/MyIndex"><i class="green github icon"></i></a>Star on github </br> © 2016 JackeyGao. Power by <a href="https://www.conoha.jp/referral/?token=G8vOyReluNtZN0fQSSAyNzldtPOCAFhanp39bkuppaJG.w90xHc-01S"><span class="green text">Conoha</span></a></b></span>
+        </div>
       </div>
     </div>
-    <!-- content end-->
-    </div>
-    <div id="footer">
-      <span class="monospaced text"><b><a href="https://github.com/jackeyGao/MyIndex"><i class="green github icon"></i></a>Star on github | © 2016 JackeyGao. Power by <a href="https://www.conoha.jp/referral/?token=G8vOyReluNtZN0fQSSAyNzldtPOCAFhanp39bkuppaJG.w90xHc-01S"><span class="green text">Conoha</span></a></b></span>
-    </div>
-    <script>
-    $('img').on('mouseover', function() {
-      $('img').transition('jiggle', '2000ms');
-    });
-    </script>
   </body> 
 </html>
 

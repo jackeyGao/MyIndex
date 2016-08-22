@@ -42,11 +42,9 @@ body > #container {
 }
 
 #footer {
-    background: #28dabf;
-    color: white; 
+    color: #BFBFBF; 
     text-align: center; 
     clear: both; 
-    position: relative; 
 }
 
 .content-wrap {
@@ -57,3 +55,41 @@ body > #container {
     background: #333444;
     background: rgba(51,52,68,.4);
 }
+
+
+@media only screen and (max-width: 767px) {
+  .ui.container {
+    width: auto !important;
+    margin-left: 0em !important;
+    margin-right: 0em !important;
+  }
+
+  .ui.grid.container {
+    width: auto !important;
+  }
+
+  .ui.relaxed.grid.container {
+    width: auto !important;
+  }
+
+  .ui.very.relaxed.grid.container {
+    width: auto !important;
+  }
+}
+
+.selection.list .level {
+    display: block;
+}
+
+.selection.list .year {
+    display: none;
+}
+
+.selection.list .item:hover .level {
+    display: none;
+}
+
+.selection.list .item:hover .year {
+    display: block;
+}
+
